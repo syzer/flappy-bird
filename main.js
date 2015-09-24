@@ -38,7 +38,7 @@ var main = function (game) {
 
         // main game loop
         update: function () {
-            if (bird.inWorld == false) {
+            if (!bird.inWorld) {
                 restart();
             }
         }
