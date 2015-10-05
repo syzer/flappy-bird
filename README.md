@@ -1,7 +1,7 @@
 #WAT
 Implementation of Flappy bird
 
-#HOw
+#HOW
 just serve with your fav server
 ex
 sudo npm install -g serve
@@ -9,3 +9,6 @@ serve ./
 [localhost:3000](localhost:3000)
 
 WORK IN PROGRESS
+
+#Disclaimer:
+I decided to redo the game , and steal all assets.
