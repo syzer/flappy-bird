@@ -1,6 +1,6 @@
 function play(game) {
 
-    var bird;
+    var bird, ground;
 
     return {
 
@@ -34,13 +34,19 @@ function play(game) {
         var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         spaceKey.onDown.add(jump);
 
+        ground = newGround(game, 0, 400, 335, 112);
+        game.add.existing(ground);
+
+
         console.log('PLAY ITS AWESOME');
     }
 
     function update() {
-        if (!bird.inWorld) {
-            restart();
-        }
+        //if (!bird.inWorld) {
+        //    restart();
+        //}
+
+        game.physics.arcade.collide(bird, ground);
     }
 
     // TODO bird
