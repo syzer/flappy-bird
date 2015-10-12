@@ -5,8 +5,7 @@ var game = new Phaser.Game(WIDTH, HEIGHT, Phaser.AUTO, 'game');
 // game container
 function main(game) {
 
-    var bird, title;
-    var asset, done;
+    var asset, isPreloadDone;
 
     return {
 
@@ -21,18 +20,6 @@ function main(game) {
     };
 
     function create() {
-        // there are 3 game engines available
-        game.physics.startSystem(Phaser.Physics.ARCADE);
-
-        // add bird
-        bird = game.add.sprite(100, 100, 'bird');
-
-        // physics makes bird fall
-        game.physics.arcade.enable(bird);
-        bird.body.gravity.y = 1000;
-
-        var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        spaceKey.onDown.add(jump);
     }
 
     function preload() {
@@ -49,29 +36,17 @@ function main(game) {
         game.load.image('ground', 'assets/ground.png');
         game.load.image('title', 'assets/title.png');
         game.load.image('startButton', 'assets/start-button.png');
-
-        var bird = game.load.spritesheet('bird', 'assets/bird.png', 34, 24, 3);
     }
 
     function update() {
-        if (done) {
-            game.state.start('menu');
+        if (isPreloadDone) {
+            //game.state.start('menu');
+            game.state.start('play');
         }
     }
 
-    // TODO bird
-    // move bird up
-    function jump() {
-        bird.body.velocity.y = -250;
-    }
-
-    // TODO game
-    function restart() {
-        game.state.start('main');
-    }
-
     function onDone() {
-        done = true;
+        isPreloadDone = true;
     }
 }
 
