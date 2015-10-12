@@ -44,7 +44,6 @@ function menu(game) {
         startButton.anchor.setTo(0.5, 0.5);
 
         console.log('menu loaded');
-
     }
 
     function update() {

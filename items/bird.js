@@ -12,5 +12,9 @@ function newBird(game, x, y, frame) {
     // set the sprite's anchor to the center
     bird.anchor.setTo(0.5, 0.5);
 
+    bird.flap = function () {
+        bird.body.velocity.y = -350;
+    };
+
     return bird;
 }
