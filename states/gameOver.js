@@ -1,11 +1,9 @@
-function play(game) {
+function gameOver(game) {
 
     var bird,
         ground,
         pipeGenerator,
-        pipeGroup,
-        score = 0,
-        scoreText = "";
+        pipeGroup;
 
     return {
 
@@ -50,9 +48,6 @@ function play(game) {
         pipeGenerator = game.time.events.loop(Phaser.Timer.SECOND * 1.55, generatePipes);
         pipeGenerator.timer.start();
 
-        scoreText = game.add.bitmapText(game.width / 2, 10, 'flappyfont', score.toString(), 24);
-        //scoreText.visible = false;
-
         console.log('PLAY ITS AWESOME');
     }
 
@@ -63,8 +58,7 @@ function play(game) {
 
         game.physics.arcade.collide(bird, ground, onDeath);
 
-        pipeGroup.forEach(function (pipe) {
-            checkScore(pipeGroup);
+        pipeGroup.forEach(function(pipe) {
             game.physics.arcade.collide(bird, pipe, onDeath);
         });
     }
@@ -98,17 +92,6 @@ function play(game) {
         game.input.keyboard.removeKey(Phaser.Keyboard.SPACEBAR);
         bird.destroy();
         pipeGroup.destroy();
-    }
-
-    function checkScore(pipeGroup) {
-        if (pipeGroup.exists
-            && !pipeGroup.hasScored
-            && pipeGroup.isAfter(bird.getX())
-        ) {
-            pipeGroup.hasScored = true;
-            scoreText.setText(score.toString());
-            score++;
-        }
     }
 
 }

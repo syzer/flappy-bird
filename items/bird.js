@@ -24,5 +24,9 @@ function newBird(game, x, y, frame) {
         }
     };
 
+    bird.getX = function () {
+        return bird.world.x;
+    };
+
     return bird;
 }

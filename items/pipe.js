@@ -31,11 +31,19 @@ function newPipeGroup(game, parent) {
         checkWorldBounds();
     };
 
+    pipeGroup.isAfter  = isAfter;
+
     function checkWorldBounds() {
         if(!topPipe.inWorld) {
             pipeGroup.exists = false;
         }
     }
 
+    function isAfter(x) {
+        return topPipe.world.x <= x;
+    }
+
+    // game.add.group returns null
+    //return [topPipe, bottomPipe];
     return pipeGroup;
 }

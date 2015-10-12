@@ -37,6 +37,10 @@ function main(game) {
         game.load.image('ground', 'assets/ground.png');
         game.load.image('title', 'assets/title.png');
         game.load.image('startButton', 'assets/start-button.png');
+        game.load.bitmapFont('flappyfont',
+            'assets/fonts/flappyfont/flappyfont.png',
+            'assets/fonts/flappyfont/flappyfont.fnt'
+        );
     }
 
     function update() {
