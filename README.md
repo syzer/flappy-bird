@@ -12,3 +12,4 @@ WORK IN PROGRESS
 
 #Disclaimer:
 I decided to redo the game , and steal all assets.
+And use tutorial on http://www.codevinsky.com/
