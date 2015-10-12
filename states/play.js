@@ -1,6 +1,6 @@
 function play(game) {
 
-    var bird, ground;
+    var bird, ground, pipeGeneretor;
 
     return {
 
@@ -38,6 +38,9 @@ function play(game) {
         spaceKey.onDown.add(flap);
         game.input.onDown.add(flap);
 
+        pipeGeneretor = game.time.events.loop(Phaser.Timer.SECOND * 1.55, generatePipes);
+        pipeGeneretor.timer.start();
+
         console.log('PLAY ITS AWESOME');
     }
 
@@ -56,5 +59,15 @@ function play(game) {
     function restart() {
         //game.state.start('play');
     }
+
+    function generatePipes() {
+        console.log('generating pipes!');
+
+        var pipeY = game.rnd.integerInRange(-100, 100);
+        var pipeGroup = newPipeGroup(game);
+        pipeGroup.x = game.width;
+        pipeGroup.y = pipeY;
+    }
+
 }
 
