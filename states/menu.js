@@ -20,16 +20,14 @@ function menu(game) {
     function create() {
         game.add.sprite(0, 0, 'background');
 
-        // x, y, width, height, key
-        var ground = game.add.tileSprite(0, 400, 280, 112, 'ground');
-        // xSpeed, ySpeed
-        ground.autoScroll(-200, 0);
+        var ground = newGround(game, 0, 400, 335, 112);
+        game.add.existing(ground);
 
         game.titleGroup = game.add.group();
         var title = game.add.sprite(0, 0, 'title');
         game.titleGroup.add(title);
 
-        var bird = game.add.sprite(200, 5, 'bird');
+        var bird = newBird(game, 50, 100);
         game.titleGroup.add(bird);
 
         bird.animations.add('flap');

@@ -37,7 +37,6 @@ function play(game) {
         ground = newGround(game, 0, 400, 335, 112);
         game.add.existing(ground);
 
-
         console.log('PLAY ITS AWESOME');
     }
 

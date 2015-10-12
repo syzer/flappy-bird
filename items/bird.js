@@ -1,9 +1,8 @@
 function newBird(game, x, y, frame) {
     var bird;
 
-
     // add bird
-    bird = game.add.sprite(20, 100, 'bird');
+    bird = game.add.sprite(x, y, 'bird');
 
     bird.animations.add('flap');
     bird.animations.play('flap', 12, true);
