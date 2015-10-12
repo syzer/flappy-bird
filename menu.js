@@ -42,7 +42,7 @@ function menu(game) {
         game.add.tween(game.titleGroup)
             .to({y: 15}, 550, Phaser.Easing.Linear.NONE, true, 0, 1000, true);
 
-        var startButton = game.add.button(WIDTH / 2, 300, 'startButton', startClick);
+        var startButton = game.add.button(WIDTH / 2, HEIGHT/ 2, 'startButton', startClick);
         startButton.anchor.setTo(0.5, 0.5);
 
         console.log('running');
