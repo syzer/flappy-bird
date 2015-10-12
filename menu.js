@@ -54,6 +54,7 @@ function menu(game) {
 
     function startClick() {
         console.log('clicked start');
+        game.state.start('play');
     }
 
 }
