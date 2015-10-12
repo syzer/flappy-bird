@@ -23,7 +23,7 @@ function main(game) {
     }
 
     function preload() {
-        game.load.image('bird', 'assets/bird.png');
+        game.load.spritesheet('bird', 'assets/bird.png', 34, 24, 3);
         game.load.image('pipe', 'assets/pipe.png');
         game.stage.backgroundColor = '#71c5ce';
 

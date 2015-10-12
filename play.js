@@ -24,18 +24,12 @@ function play(game) {
 
         // there are 3 game engines available
         game.physics.startSystem(Phaser.Physics.ARCADE);
-
-        // add bird
-        bird = game.add.sprite(30, 100, 'bird');
-        // set the sprite's anchor to the center
-        bird.anchor.setTo(0.5, 0.5);
-
-        //bird.animations.add('flap');
-        bird.animations.play('flap', 12, true);
-
         // physics makes bird fall
-        game.physics.arcade.enableBody(bird);
-        bird.body.gravity.y = 1000;
+        game.physics.arcade.gravity.y = 500;
+
+        bird = newBird(game, 100, game.height / 2);
+        // and add it to the game
+        game.add.existing(bird);
 
         var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         spaceKey.onDown.add(jump);
@@ -44,11 +38,10 @@ function play(game) {
     }
 
     function update() {
-        //if (!bird.inWorld) {
-        //    restart();
-        //}
+        if (!bird.inWorld) {
+            restart();
+        }
     }
-
 
     // TODO bird
     // move bird up
@@ -58,7 +51,7 @@ function play(game) {
 
     // TODO game
     function restart() {
-        game.state.start('main');
+        //game.state.start('play');
     }
 }
 
