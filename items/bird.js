@@ -14,6 +14,14 @@ function newBird(game, x, y, frame) {
 
     bird.flap = function () {
         bird.body.velocity.y = -350;
+        game.add.tween(bird)
+            .to({angle: -20}, 100).start();
+    };
+
+    bird.update = function () {
+        if (bird.angle < 90) {
+            bird.angle += 1.5;
+        }
     };
 
     return bird;
