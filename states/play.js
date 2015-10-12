@@ -1,6 +1,9 @@
 function play(game) {
 
-    var bird, ground, pipeGeneretor;
+    var bird,
+        ground,
+        pipeGenerator,
+        pipeGroup;
 
     return {
 
@@ -27,7 +30,7 @@ function play(game) {
         // physics makes bird fall
         game.physics.arcade.gravity.y = 1000;
 
-        bird = newBird(game, 100, game.height / 2);
+        bird = newBird(game, 30, game.height / 2);
         // and add it to the game
         game.add.existing(bird);
 
@@ -38,10 +41,12 @@ function play(game) {
         spaceKey.onDown.add(flap);
         game.input.onDown.add(flap);
 
-        pipeGeneretor = game.time.events.loop(Phaser.Timer.SECOND * 1.55, generatePipes);
-        pipeGeneretor.timer.start();
+        pipeGenerator = game.time.events.loop(Phaser.Timer.SECOND * 1.55, generatePipes);
+        pipeGenerator.timer.start();
 
         console.log('PLAY ITS AWESOME');
+
+
     }
 
     function update() {
@@ -61,10 +66,14 @@ function play(game) {
     }
 
     function generatePipes() {
-        console.log('generating pipes!');
-
         var pipeY = game.rnd.integerInRange(-100, 100);
-        var pipeGroup = newPipeGroup(game);
+
+        pipeGroup = newPipeGroup(game);
+
+        //TODO
+        //if (!pipeGroup) {
+        //pipeGroup.reset(game.width + pipeGroup.width/2, pipeY);
+
         pipeGroup.x = game.width;
         pipeGroup.y = pipeY;
     }

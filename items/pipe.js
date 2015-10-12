@@ -20,7 +20,22 @@ function newPipeGroup(game, parent) {
     var bottomPipe = newPipe(game, 0, 440, 1);
     pipeGroup.add(bottomPipe);
 
-    this.hasScored = false;
+    pipeGroup.hasScored = false;
+    pipeGroup.exists = true;
+
+    topPipe.body.velocity.x = -200;
+    bottomPipe.body.velocity.x = -200;
+    //this.setAll('body.velocity.x', -200);
+
+    pipeGroup.update = function() {
+        checkWorldBounds();
+    };
+
+    function checkWorldBounds() {
+        if(!topPipe.inWorld) {
+            pipeGroup.exists = false;
+        }
+    }
 
     return pipeGroup;
 }
