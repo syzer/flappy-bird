@@ -3,7 +3,7 @@ var HEIGHT = 490;
 var game = new Phaser.Game(WIDTH, HEIGHT, Phaser.AUTO, 'game');
 
 // game container
-function main(game) {
+function preload(game) {
 
     var asset, isPreloadDone;
 
@@ -37,10 +37,20 @@ function main(game) {
         game.load.image('ground', 'assets/ground.png');
         game.load.image('title', 'assets/title.png');
         game.load.image('startButton', 'assets/start-button.png');
-        game.load.bitmapFont('flappyfont',
+        game.load.bitmapFont('flappyFont',
             'assets/fonts/flappyfont/flappyfont.png',
             'assets/fonts/flappyfont/flappyfont.fnt'
         );
+
+        game.load.audio('score', 'assets/score.wav');
+        game.load.audio('flap', 'assets/flap.wav');
+        game.load.audio('pipeHit', 'assets/pipe-hit.wav');
+        game.load.audio('groundHit', 'assets/ground-hit.wav');
+
+        game.load.image('scoreboard', 'assets/scoreboard.png');
+        game.load.image('gameover', 'assets/gameover.png');
+        game.load.spritesheet('medals', 'assets/medals.png', 44, 46, 2);
+        game.load.image('particle', 'assets/particle.png');
     }
 
     function update() {
@@ -55,7 +65,7 @@ function main(game) {
     }
 }
 
-game.state.add('main', main(game));
+game.state.add('preload', preload(game));
 game.state.add('menu', menu(game));
 game.state.add('play', play(game));
-game.state.start('main');
+game.state.start('preload');

@@ -4,8 +4,10 @@ function play(game) {
         ground,
         pipeGenerator,
         pipeGroup,
+        // TODO score->items
         score = 0,
-        scoreText = "";
+        scoreText = "",
+        scoreSound;
 
     return {
 
@@ -50,8 +52,10 @@ function play(game) {
         pipeGenerator = game.time.events.loop(Phaser.Timer.SECOND * 1.55, generatePipes);
         pipeGenerator.timer.start();
 
-        scoreText = game.add.bitmapText(game.width / 2, 10, 'flappyfont', score.toString(), 24);
+        scoreText = game.add.bitmapText(game.width / 2, 10, 'flappyFont', score.toString(), 24);
         //scoreText.visible = false;
+
+        scoreSound = game.add.audio('score');
 
         console.log('PLAY ITS AWESOME');
     }
@@ -108,6 +112,7 @@ function play(game) {
             pipeGroup.hasScored = true;
             scoreText.setText(score.toString());
             score++;
+            scoreSound.play();
         }
     }
 

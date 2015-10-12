@@ -1,5 +1,7 @@
 function newBird(game, x, y, frame) {
-    var bird;
+
+    var bird,
+        flapSound = game.add.audio('flap');
 
     // add bird
     bird = game.add.sprite(x, y, 'bird');
@@ -16,6 +18,7 @@ function newBird(game, x, y, frame) {
         bird.body.velocity.y = -350;
         game.add.tween(bird)
             .to({angle: -20}, 100).start();
+        flapSound.play();
     };
 
     bird.update = function () {
