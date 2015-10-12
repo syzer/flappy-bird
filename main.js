@@ -1,9 +1,12 @@
-var game = new Phaser.Game(700, 490, Phaser.AUTO, 'game');
+var WIDTH = 280;
+var HEIGHT = 490;
+var game = new Phaser.Game(WIDTH, HEIGHT, Phaser.AUTO, 'game');
 
 // game container
-var main = function (game) {
+function main(game) {
 
-    var bird, pipes;
+    var bird, title;
+    var asset, done;
 
     return {
 
@@ -12,6 +15,18 @@ var main = function (game) {
             game.load.image('bird', 'assets/bird.png');
             game.load.image('pipe', 'assets/pipe.png');
             game.stage.backgroundColor = '#71c5ce';
+
+            game.load.onLoadComplete.addOnce(onDone);
+            asset = game.add.sprite(WIDTH / 2, HEIGHT / 2, 'preloader');
+            asset.anchor.setTo(0.5, 0.5);
+            game.load.setPreloadSprite(asset);
+
+            game.load.image('background', 'assets/background.png');
+            game.load.image('ground', 'assets/ground.png');
+            game.load.image('title', 'assets/title.png');
+            game.load.image('startButton', 'assets/start-button.png');
+
+            var bird = game.load.spritesheet('bird', 'assets/bird.png', 34, 24, 3);
         },
 
         // after preload display game sprites
@@ -28,22 +43,21 @@ var main = function (game) {
 
             var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
             spaceKey.onDown.add(jump);
-
-            // TODO why in Phaser groups physics API is different?
-            pipes = game.add.group();
-            pipes.enableBody = true;
-            pipes.createMultiple(10, 'pipe');
-
         },
 
         // main game loop
-        update: function () {
-            if (!bird.inWorld) {
-                restart();
-            }
-        }
+        update: update
 
     };
+
+    function update() {
+        if (done) {
+            game.state.start('menu');
+        }
+        //if (!bird.inWorld) {
+        //    restart();
+        //}
+    }
 
     // TODO bird
     // move bird up
@@ -55,7 +69,13 @@ var main = function (game) {
     function restart() {
         game.state.start('main');
     }
-};
+
+    function onDone() {
+        done = true;
+    }
+}
 
 game.state.add('main', main(game));
+game.state.add('menu', menu(game));
+//game.state.start('menu');
 game.state.start('main');
