@@ -34,6 +34,7 @@ function gameOver(game) {
     function create() {
 
         game.add.sprite(0, 0, 'background');
+        game.add.text(game.width/2 - 50, game.height/2 + 50, 'Game over!', { fill: '#000000' });
 
         console.log('gameOver is not that awesome');
     }
