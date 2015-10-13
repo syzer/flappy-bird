@@ -47,7 +47,5 @@ function newPipeGroup(game, parent) {
         return topPipe.world.x <= x;
     }
 
-    // game.add.group returns null
-    //return [topPipe, bottomPipe];
     return pipeGroup;
 }

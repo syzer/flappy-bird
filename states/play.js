@@ -65,15 +65,12 @@ function play(game) {
         checkScore(pipeGroup);
     }
 
+    //TODO reset / reuse
     function generatePipes() {
 
         var pipeY = game.rnd.integerInRange(-100, 100);
 
         pipeGroup = newPipeGroup(game);
-
-        //TODO reset!
-        //if (!pipeGroup) {
-        //pipeGroup.reset(game.width + pipeGroup.width/2, pipeY);
 
         pipeGroup.x = game.width;
         pipeGroup.y = pipeY;
