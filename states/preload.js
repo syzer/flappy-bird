@@ -27,6 +27,7 @@ function preload(game) {
         asset = game.add.sprite(WIDTH / 2, HEIGHT / 2, 'preloader');
         asset.anchor.setTo(0.5, 0.5);
         game.load.setPreloadSprite(asset);
+        game.add.text(game.width/2 - 50, game.height/2 + 50, 'Click start!', { fill: '#ffffff' });
 
         game.load.spritesheet('bird', 'assets/bird.png', 34, 24, 3);
         game.load.spritesheet('pipe', 'assets/pipes.png', 54, 320, 2);
