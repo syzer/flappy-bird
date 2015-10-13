@@ -12,4 +12,5 @@ WORK IN PROGRESS
 
 #Disclaimer:
 I decided to redo the game , and steal all assets.
-And use tutorial on http://www.codevinsky.com/
+And use tutorial on http://www.codevinsky.com/, but i didn't like so i followed
+phaser website examples
