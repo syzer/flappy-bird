@@ -47,6 +47,7 @@ function gameOver(game) {
     }
 
     function shutdown() {
+        console.log('shutdown');
     }
 
 

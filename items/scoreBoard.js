@@ -47,6 +47,7 @@ function newScoreBoard(game, spec) {
             medal.anchor.setTo(0.5, 0.5);
         }
 
+        // ugliness behind that point
         if (!medal) {
             return;
         }

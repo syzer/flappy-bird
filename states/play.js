@@ -47,8 +47,8 @@ function play(game) {
         game.add.existing(ground);
 
         var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        spaceKey.onDown.add(flap);
-        game.input.onDown.add(flap);
+        spaceKey.onDown.add(bird.flap);
+        game.input.onDown.add(bird.flap);
 
         pipeGenerator = game.time.events.loop(Phaser.Timer.SECOND * 1.55, generatePipes);
         pipeGenerator.timer.start();
@@ -67,14 +67,6 @@ function play(game) {
         //    checkScore(pipeGroup);
         //    game.physics.arcade.collide(bird, pipe, onDeath);
         //});
-    }
-
-    function flap() {
-        bird.flap();
-    }
-
-    function restart() {
-        //game.state.start('play');
     }
 
     function generatePipes() {
