@@ -39,11 +39,10 @@ function newScoreBoard(game, spec) {
     // maybe relative positioning
     // maybe whole scoreBoard Bounce out
     function maybeGiveMedal() {
-        if(scoreBoard.score >= 1 && scoreBoard.score < 10) {
-        //if (scoreBoard.score >= 0 && scoreBoard.score < 10) {
+        if(scoreBoard.score >= 1 && scoreBoard.score <= 5) {
             medal = game.add.sprite(width + 110, - 80, 'medals', 0);
             medal.anchor.setTo(0.5, 0.5);
-        } else if (scoreBoard.score > 10) {
+        } else if (scoreBoard.score > 5) {
             medal = game.add.sprite(width + 110, - 80, 'medals', 1);
             medal.anchor.setTo(0.5, 0.5);
         }
