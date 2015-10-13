@@ -23,6 +23,7 @@ function preload(game) {
     }
 
     function preload() {
+        game.load.image('preloader', 'assets/preloader.gif');
         asset = game.add.sprite(WIDTH / 2, HEIGHT / 2, 'preloader');
         asset.anchor.setTo(0.5, 0.5);
         game.load.setPreloadSprite(asset);
@@ -68,4 +69,5 @@ function preload(game) {
 game.state.add('preload', preload(game));
 game.state.add('menu', menu(game));
 game.state.add('play', play(game));
+game.state.add('gameOver', gameOver(game));
 game.state.start('preload');
