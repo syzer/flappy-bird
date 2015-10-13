@@ -28,7 +28,6 @@ function gameOver(game) {
     }
 
     function create() {
-
         game.add.sprite(0, 0, 'background');
         scoreBoard.display();
 
