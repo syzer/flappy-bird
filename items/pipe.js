@@ -11,7 +11,7 @@ function newPipe(game, x, y, frame) {
 }
 
 function newPipeGroup(game, parent) {
-
+    var pipeHitSound = game.add.audio('pipeHit');
     var pipeGroup = game.add.group();
 
     var topPipe = newPipe(game, 0, 0, 0);
@@ -29,6 +29,10 @@ function newPipeGroup(game, parent) {
 
     pipeGroup.update = function() {
         checkWorldBounds();
+    };
+
+    pipeGroup.hit = function () {
+        pipeHitSound.play();
     };
 
     pipeGroup.isAfter  = isAfter;

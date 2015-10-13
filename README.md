@@ -10,7 +10,11 @@ serve ./
 
 WORK IN PROGRESS
 
-#Disclaimer:
+#Disclaimer
 I decided to redo the game , and steal all assets.
 And use tutorial on http://www.codevinsky.com/, but i didn't like so i followed
 phaser website examples
+
+#TODO
+[ ] freeze after hit -> to show error
+[ ] animate to git ground -> play hit ground sound
