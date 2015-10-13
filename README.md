@@ -18,3 +18,4 @@ phaser website examples
 #TODO
 [ ] freeze after hit -> to show error
 [ ] animate to git ground -> play hit ground sound
+[ ] bronze medal

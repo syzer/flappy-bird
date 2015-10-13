@@ -46,7 +46,8 @@ function preload(game) {
 
         game.load.audio('score', 'assets/score.wav');
         game.load.audio('flap', 'assets/flap.wav');
-        game.load.audio('pipeHit', 'assets/pipe-hit.wav');
+        game.load.audio('pipeHit', 'assets/sfx_hit.ogg');
+        //game.load.audio('pipeHit', 'assets/pipe-hit.wav');
         game.load.audio('groundHit', 'assets/ground-hit.wav');
 
         game.load.image('scoreboard', 'assets/scoreboard.png');
