@@ -69,5 +69,6 @@
     <char id="57" x="331" y="327" width="42" height="63" xoffset="-3" yoffset="0" xadvance="41" page="0" chnl="15"/>
     <char id="48" x="339" y="262" width="42" height="63" xoffset="-3" yoffset="0" xadvance="41" page="0" chnl="15"/>
     <char id="32" x="0" y="0" width="0" height="0" xoffset="-3" yoffset="0" xadvance="31" page="0" chnl="15"/>
+    <char id="33" x="331" y="392" width="42" height="63" xoffset="-3" yoffset="0" xadvance="41" page="0" chnl="15"/>
   </chars>
 </font>

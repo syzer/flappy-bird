@@ -58,7 +58,8 @@ function preload(game) {
     function update() {
         if (isPreloadDone) {
             //game.state.start('menu');
-            game.state.start('play');
+            //game.state.start('play');
+            game.state.start('gameOver');
         }
     }
 

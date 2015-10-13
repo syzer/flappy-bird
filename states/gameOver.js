@@ -34,8 +34,10 @@ function gameOver(game) {
     function create() {
 
         game.add.sprite(0, 0, 'background');
-        game.add.text(game.width/2 - 50, game.height/2 + 50, 'Game over!', { fill: '#000000' });
-
+        var gameOverText = game.add.bitmapText(
+            game.width / 2 - 50 , game.height / 2 - 80,
+            'flappyFont', 'Game over !', 24
+        );
         console.log('gameOver is not that awesome');
     }
 
