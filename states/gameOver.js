@@ -5,6 +5,14 @@ function gameOver(game) {
         pipeGenerator,
         pipeGroup;
 
+
+    var Scoreboard = function(game) {
+        Phaser.Group.call(this, game)
+    };
+
+    Scoreboard.prototype = Object.create(Phaser.Group.prototype);
+    Scoreboard.prototype.constructor = Scoreboard;
+
     return {
 
         // before hook
@@ -58,9 +66,9 @@ function gameOver(game) {
 
         game.physics.arcade.collide(bird, ground, onDeath);
 
-        pipeGroup.forEach(function(pipe) {
-            game.physics.arcade.collide(bird, pipe, onDeath);
-        });
+        //pipeGroup.forEach(function(pipe) {
+        //    game.physics.arcade.collide(bird, pipe, onDeath);
+        //});
     }
 
     function flap() {

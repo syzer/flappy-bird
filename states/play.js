@@ -66,11 +66,12 @@ function play(game) {
         //}
 
         game.physics.arcade.collide(bird, ground, onDeath);
-
-        pipeGroup.forEach(function (pipe) {
-            checkScore(pipeGroup);
-            game.physics.arcade.collide(bird, pipe, onDeath);
-        });
+        game.physics.arcade.collide(pipeGroup, bird, onDeath);
+        checkScore(pipeGroup);
+        //pipeGroup.forEach(function (pipe) {
+        //    checkScore(pipeGroup);
+        //    game.physics.arcade.collide(bird, pipe, onDeath);
+        //});
     }
 
     function flap() {
@@ -95,6 +96,8 @@ function play(game) {
     }
 
     function onDeath() {
+        console.log('bang! bang! your\'re dead');
+        //checkScore(pipeGroup);
         game.state.start('gameOver');
     }
 
