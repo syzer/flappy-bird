@@ -1,24 +1,33 @@
-function scoreBoard(game, score) {
+function newScoreBoard(game, spec) {
 
-    var medal, bestScore, scoreBoard;
+    var medal,
+        scoreBoard = {
+            score: spec.score || 0,
+            scoreBest: 0
+        };
 
-    game.scoreText.setText(score.toString());
+    updateScoreBest();
 
-    scoreBoard.flap = function () {
-        scoreBoard.body.velocity.y = -350;
-        game.add.tween(scoreBoard)
-            .to({angle: -20}, 100).start();
+    //TODO as group and sane positioning.
+    scoreBoard.display = function() {
+        var score = game.add.bitmapText(
+            game.width / 2 - 110, game.height / 2 - 140,
+            'flappyFont', 'Current score: ' + scoreBoard.score, 24
+        );
+
+        var scoreBest = game.add.bitmapText(
+            game.width / 2 - 110, game.height / 2 - 170,
+            'flappyFont', 'Highest score: ' + scoreBoard.scoreBest, 24
+        );
     };
 
-    scoreBoard.update = function () {
-        if (scoreBoard.angle < 90) {
-            scoreBoard.angle += 1.5;
-        }
-    };
+    function updateScoreBest() {
+        var prevScoreBest = localStorage.getItem('scoreBest') || 0;
 
-    scoreBoard.getX = function () {
-        return scoreBoard.world.x;
-    };
+        scoreBoard.scoreBest = Math.max(scoreBoard.score, prevScoreBest);
+        localStorage.setItem('scoreBest', scoreBoard.scoreBest);
+        return scoreBoard.scoreBest;
+    }
 
     return scoreBoard;
 }

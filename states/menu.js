@@ -40,7 +40,7 @@ function menu(game) {
         var startButton = game.add.button(WIDTH / 2, HEIGHT/ 2, 'startButton', startClick);
         startButton.anchor.setTo(0.5, 0.5);
 
-        console.log('menu loaded');
+        game.startClick = startClick;
     }
 
     function update() {

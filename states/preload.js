@@ -57,10 +57,7 @@ function preload(game) {
 
     function update() {
         if (isPreloadDone) {
-            //game.state.start('menu');
-            //game.state.start('play');
-            game.state.start('gameOver');
-            game.state.start('gameOver', true, false, {score:15});
+            game.state.start('menu');
         }
     }
 

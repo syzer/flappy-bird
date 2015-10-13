@@ -4,7 +4,7 @@ function play(game) {
         ground,
         pipeGenerator,
         pipeGroup,
-        // TODO score->items
+        // TODO scoreBoard->items
         score = 0,
         scoreText = "",
         scoreSound;
@@ -26,7 +26,8 @@ function play(game) {
     };
 
     function preload() {
-        pipeGroup = newPipeGroup(game)
+        pipeGroup = newPipeGroup(game);
+        score = 0;
     }
 
     function create() {
@@ -53,17 +54,11 @@ function play(game) {
         pipeGenerator.timer.start();
 
         scoreText = game.add.bitmapText(game.width / 2, 10, 'flappyFont', score.toString(), 24);
-        //scoreText.visible = false;
 
         scoreSound = game.add.audio('score');
-
-        console.log('PLAY ITS AWESOME');
     }
 
     function update() {
-        //if (!bird.inWorld) {
-        //    restart();
-        //}
 
         game.physics.arcade.collide(bird, ground, onDeath);
         game.physics.arcade.collide(pipeGroup, bird, onDeath);
@@ -97,8 +92,7 @@ function play(game) {
 
     function onDeath() {
         console.log('bang! bang! your\'re dead');
-        //checkScore(pipeGroup);
-        game.state.start('gameOver');
+        game.state.start('gameOver', true, false, {score: --score});
     }
 
     function shutdown() {

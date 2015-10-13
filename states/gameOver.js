@@ -1,20 +1,14 @@
 function gameOver(game) {
-    // TODO ->scoreBoard
-    var scoreBoard = {
-        width: 100,
-        score: 0,
-        scoreBest: 0
-    };
+
+    var scoreBoard;
 
     return {
 
-        // before hook
         preload: preload,
 
         //when called with game.start
         init: init,
 
-        // after preload display game sprites
         create: create,
 
         // 60 fps
@@ -30,30 +24,13 @@ function gameOver(game) {
 
     function init(spec) {
         spec = spec || {};
-        scoreBoard.score = spec.score || 0;
-        scoreBoard.scoreBest = Math.max(scoreBoard.score, scoreBoard.scoreBest);
+        scoreBoard = newScoreBoard(game, spec);
     }
 
     function create() {
 
         game.add.sprite(0, 0, 'background');
-
-        game.scoreGroup = game.add.group();
-
-        var score = game.add.bitmapText(
-            game.width / 2 - 110, game.height / 2 - 140,
-            'flappyFont', "Current score: " + scoreBoard.score, 24
-        );
-        game.scoreGroup.add(score);
-
-        var scoreBest = game.add.bitmapText(
-            game.width / 2 - 110, game.height / 2 - 170,
-            'flappyFont', "Highest score: " + scoreBoard.scoreBest, 24
-        );
-        game.scoreGroup.add(scoreBest);
-
-
-
+        scoreBoard.display();
 
         var gameOverText = game.add.bitmapText(
             game.width / 2 - 65, game.height / 2 - 80,
@@ -63,8 +40,8 @@ function gameOver(game) {
             .to({y: game.height / 2 - 70}, 350, Phaser.Easing.Linear.None, true, 0, 1000, true);
 
 
-
-        console.log('gameOver is not that awesome');
+        var startButton = game.add.button(WIDTH / 2, HEIGHT/ 2, 'startButton',  game.startClick);
+        startButton.anchor.setTo(0.5, 0.5);
     }
 
     function update() {
@@ -72,6 +49,7 @@ function gameOver(game) {
 
     function shutdown() {
     }
+
 
 }
 

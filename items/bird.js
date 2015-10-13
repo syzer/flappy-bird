@@ -22,6 +22,10 @@ function newBird(game, x, y, frame) {
     };
 
     bird.update = function () {
+        if (!bird.angle) {
+            return;
+        }
+
         if (bird.angle < 90) {
             bird.angle += 1.5;
         }
