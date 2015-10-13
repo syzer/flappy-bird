@@ -80,6 +80,9 @@ function play(game) {
 
         pipeGroup.x = game.width;
         pipeGroup.y = pipeY;
+
+        // ugly fix the score always on top
+        game.world.bringToTop(scoreText);
     }
 
     function onDeath() {

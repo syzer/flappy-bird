@@ -4,46 +4,54 @@ function newScoreBoard(game, spec) {
     var height = game.height / 2 - 110;
 
     var medal,
-        scoreBoard = {
+        scores = {
             score: spec.score || 0,
             scoreBest: 0
-        };
+        },
+        scoreBoard = game.add.group();
 
     // warning .. ugly
     updateScoreBest();
 
     //TODO as group and sane positioning.
     scoreBoard.display = function () {
-        game.add.bitmapText(
+        var currentScore = game.add.bitmapText(
             width, height,
-            'flappyFont', 'Current score: ' + scoreBoard.score, 24
+            'flappyFont', 'Current score: ' + scores.score, 24
         );
 
-        game.add.bitmapText(
+        var topScore = game.add.bitmapText(
             width, height - 40,
-            'flappyFont', 'Highest score: ' + scoreBoard.scoreBest, 24
+            'flappyFont', 'Highest score: ' + scores.scoreBest, 24
         );
+
+        scoreBoard.add(currentScore);
+        scoreBoard.add(topScore);
 
         maybeGiveMedal();
+
+        game.world.bringToTop(scoreBoard);
+        game.add.tween(scoreBoard)
+            .to({y: height - 140}, 1000, Phaser.Easing.Bounce.Out, true);
     };
 
     function updateScoreBest() {
         var prevScoreBest = localStorage.getItem('scoreBest') || 0;
 
-        scoreBoard.scoreBest = Math.max(scoreBoard.score, prevScoreBest);
-        localStorage.setItem('scoreBest', scoreBoard.scoreBest);
-        return scoreBoard.scoreBest;
+        scores.scoreBest = Math.max(scores.score, prevScoreBest);
+        localStorage.setItem('scoreBest', scores.scoreBest);
+        return scores.scoreBest;
     }
 
     // TODO add bronze medal
     // maybe relative positioning
     // maybe whole scoreBoard Bounce out
     function maybeGiveMedal() {
-        if(scoreBoard.score >= 1 && scoreBoard.score <= 5) {
-            medal = game.add.sprite(width + 110, - 80, 'medals', 0);
+        if (scores.score >= 1 && scores.score <= 5) {
+            medal = game.add.sprite(width + 110, -80, 'medals', 0);
             medal.anchor.setTo(0.5, 0.5);
-        } else if (scoreBoard.score > 5) {
-            medal = game.add.sprite(width + 110, - 80, 'medals', 1);
+        } else if (scores.score > 5) {
+            medal = game.add.sprite(width + 110, -80, 'medals', 1);
             medal.anchor.setTo(0.5, 0.5);
         }
 
@@ -52,6 +60,8 @@ function newScoreBoard(game, spec) {
             return;
         }
 
+        scoreBoard.add(medal);
+
         game.add.tween(medal)
             .to({y: height - 80}, 1000, Phaser.Easing.Bounce.Out, true);
 
@@ -59,7 +69,8 @@ function newScoreBoard(game, spec) {
     }
 
     function addShine() {
-        var emitter = this.game.add.emitter(medal.x, medal.y, 400);
+        var emitter = game.add.emitter(medal.x, medal.y, 400);
+
         emitter.width = medal.width;
         emitter.height = medal.height;
 
@@ -76,6 +87,8 @@ function newScoreBoard(game, spec) {
         emitter.setAll('body.allowGravity', false);
 
         emitter.start(false, 800, 800);
+
+        scoreBoard.add(emitter);
     }
 
     return scoreBoard;
