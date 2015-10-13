@@ -35,9 +35,13 @@ function gameOver(game) {
 
         game.add.sprite(0, 0, 'background');
         var gameOverText = game.add.bitmapText(
-            game.width / 2 - 50 , game.height / 2 - 80,
+            game.width / 2 - 65 , game.height / 2 - 80,
             'flappyFont', 'Game over !', 24
         );
+
+        game.add.tween(gameOverText)
+            .to({y: game.height / 2 - 50}, 350, Phaser.Easing.Linear.NONE, true, 0, 1000, true);
+
         console.log('gameOver is not that awesome');
     }
 
