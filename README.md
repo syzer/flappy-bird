@@ -6,6 +6,9 @@ just serve with your fav server
 ex
 sudo npm install -g serve
 serve ./
+
+or `live-server`
+ 
 [localhost:3000](localhost:3000)
 
 WORK IN PROGRESS
@@ -16,6 +19,6 @@ And use tutorial on http://www.codevinsky.com/, but i didn't like so i followed
 phaser website examples
 
 #TODO
-[ ] freeze after hit -> to show error
-[ ] animate to git ground -> play hit ground sound
+[X] freeze after hit -> to show error
+[X] animate to git ground -> play hit ground sound
 [ ] bronze medal
