@@ -11,12 +11,10 @@ or `live-server`
  
 [localhost:3000](localhost:3000)
 
-WORK IN PROGRESS
-
 #Disclaimer
 I decided to redo the game , and steal all assets.
 And use tutorial on http://www.codevinsky.com/, but i didn't like so i followed
-phaser website examples
+phaser website examples [http://phaser.io/examples]()
 
 #TODO
 [X] freeze after hit -> to show error
