@@ -46,12 +46,6 @@ function play(game) {
         ground = newGround(game, 0, 400, 335, 112);
         game.add.existing(ground);
 
-        //TODO -> bird
-        var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        spaceKey.onDown.add(bird.flap);
-        var tap = game.input.onDown.add(bird.flap);
-        console.warn(game.input.keyboard, game.input);
-
         pipeGenerator = game.time.events.loop(Phaser.Timer.SECOND * 1.55, generatePipes);
         pipeGenerator.timer.start();
 
@@ -90,8 +84,6 @@ function play(game) {
         pipeGenerator.timer.stop();
         pipeGroup.stop();
         bird.hit();
-        //game.input.keyboard.stop();
-        //game.input.reset();
 
         if ('ground' === obstacle.key) {
             game.state.start('gameOver', true, false, {score: --score});

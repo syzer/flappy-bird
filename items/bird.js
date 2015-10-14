@@ -2,7 +2,8 @@ function newBird(game, x, y, frame) {
 
     var bird = game.add.sprite(x, y, 'bird'),
         flapSound = game.add.audio('flap'),
-        alive = true;
+        alive = true,
+        spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
     bird.animations.add('flap');
     bird.animations.play('flap', 12, true);
@@ -34,19 +35,23 @@ function newBird(game, x, y, frame) {
         if (!alive) {
             return
         }
-        console.log('Da bird had died');
         // reset animation to 0 frame
         bird.animations.stop();
 
-        bird.body.velocity.y = +400;
-        bird.body.velocity.x = -10;
+        bird.body.velocity.y = -400;
+        bird.body.velocity.x = +100;
         bird.angle += 30;
+        console.log('Da bird had died');
         alive = false;
+        game.input.onDown.removeAll();
     };
 
     bird.getX = function () {
         return bird.world.x;
     };
+
+    spaceKey.onDown.add(bird.flap);
+    game.input.onDown.add(bird.flap);
 
     return bird;
 }
