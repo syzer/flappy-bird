@@ -32,6 +32,11 @@ function newBird(game, x, y, frame) {
     // TODO change gravity.. stop animation
     bird.hit = function() {
         console.log('Da bird had died');
+        // reset animation to 0 frame
+        bird.animations.stop();
+
+        bird.body.velocity.y = +400;
+        bird.body.velocity.x = -10;
     };
 
     bird.getX = function () {
