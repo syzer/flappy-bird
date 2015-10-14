@@ -1,7 +1,8 @@
 function newBird(game, x, y, frame) {
 
     var bird = game.add.sprite(x, y, 'bird'),
-        flapSound = game.add.audio('flap');
+        flapSound = game.add.audio('flap'),
+        alive = true;
 
     bird.animations.add('flap');
     bird.animations.play('flap', 12, true);
@@ -30,12 +31,17 @@ function newBird(game, x, y, frame) {
 
     //TODO awesome death animation
     bird.hit = function() {
+        if (!alive) {
+            return
+        }
         console.log('Da bird had died');
         // reset animation to 0 frame
         bird.animations.stop();
 
         bird.body.velocity.y = +400;
         bird.body.velocity.x = -10;
+        bird.angle += +20;
+        alive = false;
     };
 
     bird.getX = function () {
