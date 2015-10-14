@@ -40,7 +40,7 @@ function newBird(game, x, y, frame) {
 
         bird.body.velocity.y = +400;
         bird.body.velocity.x = -10;
-        bird.angle += +20;
+        bird.angle += 30;
         alive = false;
     };
 
