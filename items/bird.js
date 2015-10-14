@@ -1,10 +1,7 @@
 function newBird(game, x, y, frame) {
 
-    var bird,
+    var bird = game.add.sprite(x, y, 'bird'),
         flapSound = game.add.audio('flap');
-
-    // add bird
-    bird = game.add.sprite(x, y, 'bird');
 
     bird.animations.add('flap');
     bird.animations.play('flap', 12, true);
@@ -29,6 +26,12 @@ function newBird(game, x, y, frame) {
         if (bird.angle < 90) {
             bird.angle += 1.5;
         }
+    };
+
+    //TODO awesome death animation
+    // TODO change gravity.. stop animation
+    bird.hit = function() {
+        console.log('Da bird had died');
     };
 
     bird.getX = function () {

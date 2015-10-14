@@ -28,6 +28,8 @@ function gameOver(game) {
     }
 
     function create() {
+        console.log('bang! bang! your\'re dead');
+
         game.add.sprite(0, 0, 'background');
         scoreBoard.display();
 

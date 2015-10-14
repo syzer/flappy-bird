@@ -61,11 +61,11 @@ function play(game) {
     function update() {
 
         game.physics.arcade.collide(bird, ground, onDeath);
-        game.physics.arcade.collide(pipeGroup, bird, onDeath);
+        game.physics.arcade.collide(bird, pipeGroup, onDeath);
         checkScore(pipeGroup);
     }
 
-    //TODO reset / reuse
+    //TODO reset
     function generatePipes() {
 
         var pipeY = game.rnd.integerInRange(-100, 100);
@@ -80,11 +80,15 @@ function play(game) {
     }
 
     //TODO add ground hit
-    function onDeath() {
-        console.log('bang! bang! your\'re dead');
-        pipeGroup.hit();
-
-        game.state.start('gameOver', true, false, {score: --score});
+    function onDeath(bird, obstacle) {
+        console.log(obstacle, obstacle.key, obstacle.hit);
+        obstacle.hit();
+        ground.stop();
+        pipeGenerator.timer.stop();
+        pipeGroup.stop();
+        if ('ground' === obstacle.key) {
+            game.state.start('gameOver', true, false, {score: --score});
+        }
     }
 
     function shutdown() {
